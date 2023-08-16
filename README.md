@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
-Please use command 'node server.js' to start node server for API on 'tasks/server' folder
+Please use command 'node server.js' to start node server for API on '/server' folder
 
 
 
