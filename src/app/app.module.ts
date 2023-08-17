@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CarDetailsComponent } from './components/details/details.component';
 import { CarService } from './components/cars.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarService } from './components/cars.service';
     HomeComponent,
     NavbarComponent,
     CarsComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
