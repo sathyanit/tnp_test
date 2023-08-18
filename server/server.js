@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const path = require('path');
 const cors = require("cors");
 const app = express();
 const PORT = 3000;
@@ -8,6 +9,7 @@ const PORT = 3000;
 // Read JSON file and parse data
 const filePath = "data.json"; // Replace with your file path
 let jsonData = [];
+const baseUrl = "http://localhost:4200";
 try {
   const fileContent = fs.readFileSync(filePath, "utf8");
   jsonData = JSON.parse(fileContent);
@@ -21,7 +23,7 @@ app.use(cors());
 
 //method for list data
 app.get("/api/data", (req, res) => {
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", baseUrl);
   fs.readFile("data.json", "utf8", (err, data) => {
     if (err) {
       console.error("Error reading JSON file:", err);
@@ -42,7 +44,7 @@ app.get("/api/data", (req, res) => {
 // Endpoint to get data by ID
 app.get("/api/data/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", baseUrl);
   fs.readFile("data.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
@@ -62,7 +64,7 @@ app.get("/api/data/:id", (req, res) => {
 
 // Add data method route
 app.post("/addData", (req, res) => {
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", baseUrl);
   try {
     // Read existing data from JSON file
     const rawData = fs.readFileSync("data.json");
@@ -107,7 +109,7 @@ const writeDataToFile = (data) => {
 
 // Update data by ID
 app.put("/api/update/:id", (req, res) => {
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", baseUrl);
   const idToUpdate = parseInt(req.params.id);
   const newData = req.body;
 
@@ -142,4 +144,18 @@ app.get('/search', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+
+app.get('/image', (req, res) => {
+  const imagePath = path.join(__dirname, '../src/assets/images/'+req.image); // Update with your image path
+  fs.readFile(imagePath, (err, data) => {
+    if (err) {
+      res.status(500).json({ error: 'Error reading image file' });
+      return;
+    }
+
+    const base64Image = Buffer.from(data).toString('base64');
+    res.json({ image: base64Image });
+  });
 });

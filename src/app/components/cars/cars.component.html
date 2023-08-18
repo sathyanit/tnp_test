@@ -15,7 +15,7 @@
       <ng-container *ngFor="let car of cars">
       <div class="col-md-4">
         <div class="car-wrap rounded ftco-animate">
-          <div class="img rounded d-flex align-items-end cars-list-image">
+          <div class="img rounded d-flex align-items-end cars-list-image" style="background-image: url('../../../assets/images/{{car.image}}');">
           </div>
           <div class="text">
             <h2 class="mb-0"><a [routerLink]="['/car', car.id]">{{ car.title }}</a></h2>

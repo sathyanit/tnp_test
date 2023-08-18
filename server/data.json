@@ -2,31 +2,37 @@
   {
     "id": 1,
     "title": "Car 1",
-    "description": "Description for Car one"
+    "description": "Description for Car one",
+    "image": "car-1.jpg"
   },
   {
     "id": 2,
     "title": "Car 2",
-    "description": "Description for Car two"
+    "description": "Description for Car two",
+    "image": "car-2.jpg"
   },
   {
     "id": 3,
     "title": "Car 3",
-    "description": "Description for Car 3"
+    "description": "Description for Car 3",
+    "image": "car-3.jpg"
   },
   {
     "title": "Car 4",
+    "image": "car-4.jpg",
     "description": "test",
     "id": 4
   },
   {
     "title": "Car 5",
     "description": "sa",
+    "image": "car-5.jpg",
     "id": 4
   },
   {
     "title": "Car 6",
     "description": "Details6",
+    "image": "car-6.jpg",
     "id": 5
   }
 ]
